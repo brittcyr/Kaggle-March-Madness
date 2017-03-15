@@ -9,7 +9,7 @@ from elo_late import elo_scores_late
 from elo_tourney import elo_scores_tourney
 from points_model import points_model, points_prob
 
-MAX_ITERATIONS = 500
+MAX_ITERATIONS = 10000
 
 
 def construct_data():
@@ -46,7 +46,7 @@ def construct_target_data():
     tourney_teams = get_tourney_teams()
 
     DATA = []
-    Season = '2016'
+    Season = '2017'
     for t1 in tourney_teams:
         for t2 in tourney_teams:
             if t1 >= t2:
@@ -107,13 +107,13 @@ def main(max_iterations=MAX_ITERATIONS):
             result = max(updated_data) if max(updated_data) < .99 else .99
         if result < min(updated_data) or result < min(updated_data):
             result = min(updated_data) if min(updated_data) > .01 else .01
-        s = "2016_%s_%s,%f\n" % (t1, t2, result)
+        s = "2017_%s_%s,%f\n" % (t1, t2, result)
         f.write(s)
 
         (SEED_SCORE, POINTS_SCORE, ELO_SCORE, ELO_LATE_SCORE, ELO_TOURNEY_SCORE, t1, t2) = data
         result2 = (SEED_SCORE * 7 + POINTS_SCORE * 2 + ELO_SCORE * 6 + \
                 ELO_LATE_SCORE + ELO_TOURNEY_SCORE * 4) / 20.0
-        s2 = "2016_%s_%s,%f\n" % (t1, t2, result2)
+        s2 = "2017_%s_%s,%f\n" % (t1, t2, result2)
         f2.write(s2)
 
     f.close()

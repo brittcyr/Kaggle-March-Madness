@@ -3,7 +3,7 @@
 
 def read_data():
     regular_season_results = []
-    f = open('2016/RegularSeasonDetailedResults.csv', 'r')
+    f = open('2017/RegularSeasonDetailedResults.csv', 'r')
     f.readline()
     for line in f:
         row = line.strip()
@@ -12,7 +12,7 @@ def read_data():
 
 
     tourney_results = []
-    f = open('TourneyDetailedResults.csv', 'r')
+    f = open('2017/TourneyDetailedResults.csv', 'r')
     f.readline()
     for line in f:
         row = line.strip()
@@ -20,7 +20,7 @@ def read_data():
         tourney_results.append(row.split(','))
 
     seeds = {}
-    f = open('2016/TourneySeeds.csv', 'r')
+    f = open('2017/TourneySeeds.csv', 'r')
     f.readline()
     for line in f:
         row = line.strip()
@@ -30,9 +30,9 @@ def read_data():
 
     return regular_season_results, tourney_results, seeds
 
-def get_tourney_teams(season='2016'):
+def get_tourney_teams(season='2017'):
     teams = []
-    f = open('2016/TourneySeeds.csv', 'r')
+    f = open('2017/TourneySeeds.csv', 'r')
     f.readline()
     for line in f:
         row = line.strip()
